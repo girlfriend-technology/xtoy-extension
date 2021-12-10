@@ -1,0 +1,17 @@
+{
+    "name": "content",
+    "umd:main": "./dist/content.js",
+    "source": "src/index.js",
+    "scripts": {
+        "copy-dist": "cp dist/* '../X to Y/Shared (Extension)/Resources'",
+        "dev": "npm run build -- -w",
+        "build": "microbundle -f umd --no-sourcemap",
+        "postbuild": "npm run copy-dist",
+        "lint": "standard src"
+    },
+    "devDependencies": {
+        "lodash": "^4.17.21",
+        "microbundle": "^0.14.1",
+        "standard": "^16.0.4"
+    }
+}

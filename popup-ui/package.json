@@ -2,13 +2,20 @@
   "name": "popup",
   "private": true,
   "scripts": {
+    "copy-all": "npm run copy-safari && npm run copy-chrome && npm run copy-firefox",
+    "copy-safari": "cp -r out/* '../X to Y/Shared (Extension)/Resources/popup'",
+    "copy-chrome": "cp -r out/* '../chrome/popup'",
+    "copy-firefox": "cp -r out/* '../firefox/popup'",
     "build": "next build && next export",
     "dev": "next",
     "lint": "next lint",
     "start": "next start",
-    "clean-build-dest": "rm -rf '../X to Y/Shared (Extension)/Resources/popup'",
+    "clean-all": "npm run copy-safari && npm run copy-chrome && npm run copy-firefox",
+    "clean-safari": "rm -rf '../X to Y/Shared (Extension)/Resources/popup'",
+    "clean-chrome": "rm -rf '../chrome/popup'",
+    "clean-firefox": "rm -rf '../firefox/popup'",
     "copy-build": "cp -r out '../X to Y/Shared (Extension)/Resources/popup'",
-    "postbuild": "npm run clean-build-dest && npm run copy-build"
+    "postbuild": "npm run clean-all && npm run copy-all"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.4",

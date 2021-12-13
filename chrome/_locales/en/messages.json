@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "X to Y",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Replace words and links on the web",
+        "description": "Description of what the extension does."
+    }
+}

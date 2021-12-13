@@ -3,11 +3,14 @@
     "umd:main": "./dist/content.js",
     "source": "src/index.js",
     "scripts": {
-        "copy-dist": "cp dist/* '../X to Y/Shared (Extension)/Resources'",
-        "dev": "npm run build -- -w",
         "build": "microbundle -f umd --no-sourcemap",
-        "postbuild": "npm run copy-dist",
-        "lint": "standard src"
+        "copy-all": "npm run copy-safari && npm run copy-chrome && npm run copy-firefox",
+        "copy-chrome": "cp dist/* '../chrome/'",
+        "copy-firefox": "cp dist/* '../firefox/'",
+        "copy-safari": "cp dist/* '../X to Y/Shared (Extension)/Resources'",
+        "dev": "npm run build -- -w",
+        "lint": "standard src",
+        "postbuild": "npm run copy-all"
     },
     "devDependencies": {
         "lodash": "^4.17.21",

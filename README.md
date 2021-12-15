@@ -17,6 +17,7 @@ X to Y supports plain text, regex, and urls.
 - [Safari for iOS and Mac](https://apps.apple.com/us/app/x-to-y/id1598259546)
 - [Firefox for Desktop and Android](https://addons.mozilla.org/addon/x-to-y/)
 - [Chrome](https://chrome.google.com/webstore/detail/ifgihheafoppkadpfneacgpdicmphpcl)
+- [Edge](https://microsoftedge.microsoft.com/addons/detail/eodpmnookfpophmeocggibipjlfmnfpl)
 
 
 ## Folder Structure

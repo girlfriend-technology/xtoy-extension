@@ -14,7 +14,7 @@
     },
     "devDependencies": {
         "lodash": "^4.17.21",
-        "microbundle": "^0.14.1",
+        "microbundle": "^0.14.2",
         "standard": "^16.0.4"
     }
 }

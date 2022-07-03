@@ -1,20 +1,25 @@
-import { appearsToBeRegExp, stringToRegex } from './regex'
-import { getStorage } from './storage'
-import filter from 'lodash/filter'
+import { appearsToBeRegExp, stringToRegex } from "./regex";
+import { getStorage } from "./storage";
+import filter from "lodash/filter";
 
 const replaceLinks = (links) => {
   getStorage().then(({ data }) => {
-    const linksData = filter(data, { enabled: true, links: true })
+    const linksData = filter(data, { enabled: true, links: true });
     linksData.forEach(({ x, y }) => {
-      links.forEach(el => {
+      links.forEach((el) => {
+        const originalValue = el.href;
+        let href = el.href;
         if (appearsToBeRegExp(x)) {
-          el.href = el.href.replace(stringToRegex(x), y)
+          href = el.href.replace(stringToRegex(x), y);
         } else {
-          el.href = el.href.replace(x, y)
+          href = el.href.replace(x, y);
         }
-      })
-    })
-  })
-}
+        if (originalValue !== href) {
+          el.href = href;
+        }
+      });
+    });
+  });
+};
 
-export default replaceLinks
+export default replaceLinks;

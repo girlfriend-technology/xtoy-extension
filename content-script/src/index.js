@@ -7,13 +7,8 @@ const replaceLinksDebounced = debounce(replaceLinks, 100);
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
-    if (mutation.type === "attributes") {
-      if (mutation.attributeName === "href") {
-        replaceLinksDebounced(document.querySelectorAll("a[href]"));
-      }
-    } else {
-      walkTreeDebounced(document.body);
-    }
+    replaceLinksDebounced(document.querySelectorAll("a[href]"));
+    walkTreeDebounced(document.body);
   });
 });
 

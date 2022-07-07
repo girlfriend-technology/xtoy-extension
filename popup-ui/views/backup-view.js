@@ -12,7 +12,7 @@ const Backup = () => {
   return (
     <div>
       {isValidConfigImport === false ? (
-        <Text className="mb-4 font-semibold text-red-500">
+        <Text className="mb-4 font-semibold text-red-700">
           Invalid config file
         </Text>
       ) : (

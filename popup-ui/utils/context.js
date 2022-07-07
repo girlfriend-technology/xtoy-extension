@@ -108,6 +108,8 @@ const Provider = ({ children, data: initialData = [] }) => {
     link.href = URL.createObjectURL(blob);
     link.download = "xtoy-config.json";
     link.click();
+    window.open(link.href, "_blank");
+    URL.revokeObjectURL(link.href);
   };
 
   const handleAddExamples = () => setData(example);

@@ -7,6 +7,28 @@ import find from "lodash/find";
 import has from "lodash/has";
 import map from "lodash/map";
 
+const handleValidateConfig = (
+  input,
+  setIsValid = () => {},
+  updateConfig = () => {},
+  onComplete = () => {}
+) => {
+  let json;
+  try {
+    json = JSON.parse(input);
+  } catch (e) {
+    setIsValid(false);
+    return;
+  }
+  checkConfig(json).then((isValid) => {
+    setIsValid(isValid);
+    if (isValid) {
+      updateConfig(json);
+      onComplete();
+    }
+  });
+};
+
 const Context = createContext({});
 const Provider = ({ children, data: initialData = [] }) => {
   const [data, setData] = useState(initialData);
@@ -83,20 +105,9 @@ const Provider = ({ children, data: initialData = [] }) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      let json;
-      try {
-        json = JSON.parse(reader.result);
-      } catch (e) {
-        setIsValidConfigImport(false);
-        return;
-      }
-      checkConfig(json).then((isValid) => {
-        setIsValidConfigImport(isValid);
-        if (isValid) {
-          setData(json);
-          setIsBackingUp(false);
-        }
-      });
+      handleValidateConfig(reader.result, setIsValidConfigImport, setData, () =>
+        setIsBackingUp(false)
+      );
     };
     reader.readAsText(file);
   };
@@ -109,6 +120,10 @@ const Provider = ({ children, data: initialData = [] }) => {
     link.download = "xtoy-config.json";
     link.click();
     URL.revokeObjectURL(link.href);
+  };
+
+  const handleUpdateConfig = (e) => {
+    handleValidateConfig(e.target.value, setIsValidConfigImport, setData);
   };
 
   const handleAddExamples = () => setData(example);
@@ -125,6 +140,7 @@ const Provider = ({ children, data: initialData = [] }) => {
     handleExport,
     handleImport,
     handleSave,
+    handleUpdateConfig,
     isBackingUp,
     isEditing,
     isValidConfigImport,

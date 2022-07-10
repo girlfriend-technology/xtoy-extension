@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "copy-all": "npm run copy-safari && npm run copy-chrome && npm run copy-firefox",
-    "copy-safari": "cp -r out/* '../X to Y/Shared (Extension)/Resources/popup'",
-    "copy-chrome": "cp -r out/* '../chrome/popup'",
-    "copy-firefox": "cp -r out/* '../firefox/popup'",
+    "copy-safari": "mkdir -p '../X to Y/Shared (Extension)/Resources/popup' && cp -r out/* '../X to Y/Shared (Extension)/Resources/popup'",
+    "copy-chrome": "mkdir -p '../chrome/popup' && cp -r out/* '../chrome/popup'",
+    "copy-firefox": "mkdir -p '../firefox/popup' && cp -r out/* '../firefox/popup'",
     "build": "next build && next export",
     "dev": "next",
     "lint": "next lint",

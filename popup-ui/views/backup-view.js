@@ -16,8 +16,11 @@ const Backup = () => {
     isValidConfigImport,
   } = useContext(Context);
 
-  const isSafari = navigator.userAgent.split(" ").at(-1).includes("Safari");
-  const isFirefox = navigator.userAgent.split(" ").at(-1).includes("Firefox");
+  const isBrowser = typeof window !== "undefined";
+  const isSafari =
+    isBrowser && navigator.userAgent.split(" ").at(-1).includes("Safari");
+  const isFirefox =
+    isBrowser && navigator.userAgent.split(" ").at(-1).includes("Firefox");
 
   return (
     <div>

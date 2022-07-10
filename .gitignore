@@ -1,3 +1,10 @@
+firefox/content.js
+firefox/popup/
+chrome/content.js
+chrome/popup/
+X to Y/Shared (Extension)/Resources/content.js
+X to Y/Shared (Extension)/Resources/popup/
+
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
